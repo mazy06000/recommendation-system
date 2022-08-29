@@ -1,0 +1,31 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "route": "GetRecommandations/{id}"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "articlesrecommended",
+      "databaseName": "recommendations",
+      "collectionName": "UserArticles",
+      "connectionStringSetting": "p9_DOCUMENTDB",
+      "direction": "in",
+      "Id": "{id}",
+      "PartitionKey": "{id}"
+    }
+  ]
+}
